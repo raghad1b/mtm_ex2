@@ -28,5 +28,3 @@ public:
 
     friend std::ostream& operator<<(std::ostream& os, const ExamDetails& exam_details);
 };
-
-std::ostream& operator<<(std::ostream& os, const ExamDetails& exam_details);
