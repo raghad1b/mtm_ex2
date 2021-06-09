@@ -16,7 +16,7 @@ ExamDetails::ExamDetails(int course_id, int month, int day, double start_time, i
         if (month<1 || month>12 || day<1 || day>30) {
             throw InvalidDateException();
         }
-        if (((int)(start_time*2))%2 != 0) {
+        if (!(equalNums((int)(start_time*2), start_time*2))) {
             throw InvalidTimeException();
         }
         if (total_time < 0) {
@@ -32,7 +32,7 @@ void ExamDetails::setLink(string new_link) {
     this->zoom_link = new_link;
 }
 
-int ExamDetails::operator-(const ExamDetails& exam_details) const {
+int ExamDetails::operator-(const ExamDetails& exam_details) const{
     return dateDifference(this->month, this->day, exam_details.month, exam_details.day); 
 }
 
@@ -46,7 +46,7 @@ bool ExamDetails::equalNums(double num1, double num2) {
     }
     return false;
 }
-bool ExamDetails::operator<(const ExamDetails& exam_details) const {
+bool ExamDetails::operator<(const ExamDetails& exam_details) const{
     int date_difference = dateDifference(this->month, this->day, exam_details.month, exam_details.day);
     if (date_difference != 0) {
         return date_difference<0;
@@ -57,8 +57,7 @@ bool ExamDetails::operator<(const ExamDetails& exam_details) const {
 }
 
 ExamDetails ExamDetails::makeMatamExam() {
-    ExamDetails mtm_exam = ExamDetails(234124, 7, 28, 13, 3, "https://tinyurl.com/59hzps6m");
-    return mtm_exam;
+    return ExamDetails(234124, 7, 28, 13, 3, "https://tinyurl.com/59hzps6m");
 }
 
 std::ostream& operator<<(std::ostream& os, const ExamDetails& exam_details) {
@@ -70,6 +69,3 @@ std::ostream& operator<<(std::ostream& os, const ExamDetails& exam_details) {
     return os;
 
 }
-
-
-
