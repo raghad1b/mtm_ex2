@@ -18,8 +18,8 @@ public:
     ExamDetails& operator=(const ExamDetails& exam_details) = default;
     std::string getLink() const;
     void setLink(std::string new_link);
-    int operator-(const ExamDetails& exam_details) const;
-    bool operator<(const ExamDetails& exam_details) const;
+    int operator-(const ExamDetails& exam_details1) const;
+    bool operator<(const ExamDetails& exam_details1) const;
     static ExamDetails makeMatamExam();
 
     class InvalidDateException {};
@@ -28,5 +28,3 @@ public:
 
     friend std::ostream& operator<<(std::ostream& os, const ExamDetails& exam_details);
 };
-
-std::ostream& operator<<(std::ostream& os, const ExamDetails& exam_details);
